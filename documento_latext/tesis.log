@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.18)  29 JAN 2021 17:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.18)  1 FEB 2021 11:36
 entering extended mode
 **./tesis.tex
 (tesis.tex
@@ -1677,8 +1677,18 @@ Package pdftex.def Info: pictures/procesocalsificacion.png  used on input line
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.164 
-       <./pictures/procesocalsificacion.png>] [43] [44] [45]) (capitulo35.tex
-[46]
+       <./pictures/procesocalsificacion.png>] [43] [44] [45]
+
+! LaTeX Error: Undefined color `Cyan'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.228 ...re/relaciones-conceptuales/tree/master}}}
+                                                  
+? 
+) (capitulo35.tex [46]
 Cap\'{\i }tulo 3.
 
 Underfull \hbox (badness 6412) in paragraph at lines 42--42
@@ -1723,12 +1733,12 @@ Overfull \vbox (43.78944pt too high) has occurred while \output is active []
                                                   \fi \fi 
 l.45 
      ]
-<pictures/Silhouette.png, id=532, 867.24pt x 433.62pt>
+<pictures/Silhouette.png, id=533, 867.24pt x 433.62pt>
 File: pictures/Silhouette.png Graphic file (type png)
 <use pictures/Silhouette.png>
 Package pdftex.def Info: pictures/Silhouette.png  used on input line 59.
 (pdftex.def)             Requested size: 443.86316pt x 221.93063pt.
-<pictures/WCSS.png, id=534, 867.24pt x 433.62pt>
+<pictures/WCSS.png, id=535, 867.24pt x 433.62pt>
 File: pictures/WCSS.png Graphic file (type png)
 <use pictures/WCSS.png>
 Package pdftex.def Info: pictures/WCSS.png  used on input line 65.
@@ -1740,7 +1750,7 @@ Package pdftex.def Info: pictures/WCSS.png  used on input line 65.
                                                   \fi \fi 
 l.69 
       <./pictures/Silhouette.png>]
-<pictures/implementacion1.png.jpg, id=545, 505.89pt x 543.53062pt>
+<pictures/implementacion1.png.jpg, id=546, 505.89pt x 543.53062pt>
 File: pictures/implementacion1.png.jpg Graphic file (type jpg)
 <use pictures/implementacion1.png.jpg>
 Package pdftex.def Info: pictures/implementacion1.png.jpg  used on input line 8
@@ -1780,7 +1790,7 @@ l.116 ...Corpus\_doc2vec  \in$  grupo\_documento }
 l.116 ...Corpus\_doc2vec  \in$  grupo\_documento }
                                                   
 ? 
-<pictures/implementacion3.jpg, id=559, 170.13562pt x 376.40625pt>
+<pictures/implementacion3.jpg, id=560, 170.13562pt x 376.40625pt>
 File: pictures/implementacion3.jpg Graphic file (type jpg)
 <use pictures/implementacion3.jpg>
 Package pdftex.def Info: pictures/implementacion3.jpg  used on input line 145.
@@ -1836,7 +1846,7 @@ l.181 		  \STATE {$G $\leftarrow
                                                   \fi \fi 
 l.188 
        <./pictures/implementacion3.jpg>]
-<pictures/proceso5.png, id=587, 867.24pt x 722.7pt>
+<pictures/proceso5.png, id=588, 867.24pt x 722.7pt>
 File: pictures/proceso5.png Graphic file (type png)
 <use pictures/proceso5.png>
 Package pdftex.def Info: pictures/proceso5.png  used on input line 206.
@@ -1855,12 +1865,12 @@ e same identifier (name{table.3.2}) has been already used, duplicate ignored
 l.260 E
        n el grupo 1 se encuentran trabajos de grado relacionados a temática...
 ]
-<pictures/grupo14.jpg, id=622, 453.19313pt x 347.79938pt>
+<pictures/grupo14.jpg, id=623, 453.19313pt x 347.79938pt>
 File: pictures/grupo14.jpg Graphic file (type jpg)
 <use pictures/grupo14.jpg>
 Package pdftex.def Info: pictures/grupo14.jpg  used on input line 264.
 (pdftex.def)             Requested size: 355.09187pt x 272.51364pt.
-<pictures/grupo5.jpg, id=624, 506.6428pt x 307.90031pt>
+<pictures/grupo5.jpg, id=625, 506.6428pt x 307.90031pt>
 File: pictures/grupo5.jpg Graphic file (type jpg)
 <use pictures/grupo5.jpg>
 Package pdftex.def Info: pictures/grupo5.jpg  used on input line 281.
@@ -1872,7 +1882,7 @@ Package pdftex.def Info: pictures/grupo5.jpg  used on input line 281.
                                                   \fi \fi 
 l.285 
        <./pictures/grupo14.jpg>]
-<pictures/grupo6.jpg, id=632, 524.71031pt x 359.84438pt>
+<pictures/grupo6.jpg, id=633, 524.71031pt x 359.84438pt>
 File: pictures/grupo6.jpg Graphic file (type jpg)
 <use pictures/grupo6.jpg>
 Package pdftex.def Info: pictures/grupo6.jpg  used on input line 289.
@@ -1884,7 +1894,7 @@ Package pdftex.def Info: pictures/grupo6.jpg  used on input line 289.
                                                   \fi \fi 
 l.293 
        <./pictures/grupo5.jpg>]
-<pictures/grafocul0.png, id=638, 394.47375pt x 277.035pt>
+<pictures/grafocul0.png, id=639, 394.47375pt x 277.035pt>
 File: pictures/grafocul0.png Graphic file (type png)
 <use pictures/grafocul0.png>
 Package pdftex.def Info: pictures/grafocul0.png  used on input line 300.
@@ -1903,12 +1913,12 @@ same identifier (name{figure.3.9}) has been already used, duplicate ignored
 l.319 E
        n el grupo 13 se encuentran trabajos de grado en temáticas de ordena...
  <./pictures/grafocul0.png>]
-<pictures/grupo22.jpg, id=650, 414.79968pt x 358.33875pt>
+<pictures/grupo22.jpg, id=651, 414.79968pt x 358.33875pt>
 File: pictures/grupo22.jpg Graphic file (type jpg)
 <use pictures/grupo22.jpg>
 Package pdftex.def Info: pictures/grupo22.jpg  used on input line 327.
 (pdftex.def)             Requested size: 355.09187pt x 306.76556pt.
-<pictures/grupo1especies.png, id=652, 633.86812pt x 364.36125pt>
+<pictures/grupo1especies.png, id=653, 633.86812pt x 364.36125pt>
 File: pictures/grupo1especies.png Graphic file (type png)
 <use pictures/grupo1especies.png>
 Package pdftex.def Info: pictures/grupo1especies.png  used on input line 335.
@@ -1920,7 +1930,7 @@ Package pdftex.def Info: pictures/grupo1especies.png  used on input line 335.
                                                   \fi \fi 
 l.339 
        <./pictures/grupo22.jpg>]
-<pictures/grupo25.jpg, id=661, 466.74374pt x 284.56313pt>
+<pictures/grupo25.jpg, id=662, 466.74374pt x 284.56313pt>
 File: pictures/grupo25.jpg Graphic file (type jpg)
 <use pictures/grupo25.jpg>
 Package pdftex.def Info: pictures/grupo25.jpg  used on input line 342.
@@ -1938,12 +1948,12 @@ l.348
                                                   \fi \fi 
 l.348 
        <./pictures/grupo1especies.png> <./pictures/grupo25.jpg>]
-<pictures/ordenaminetoimg.jpg, id=669, 536.75531pt x 371.88937pt>
+<pictures/ordenaminetoimg.jpg, id=670, 536.75531pt x 371.88937pt>
 File: pictures/ordenaminetoimg.jpg Graphic file (type jpg)
 <use pictures/ordenaminetoimg.jpg>
 Package pdftex.def Info: pictures/ordenaminetoimg.jpg  used on input line 360.
 (pdftex.def)             Requested size: 443.86316pt x 307.52751pt.
-<pictures/grupo28.jpg, id=671, 457.71pt x 293.59688pt>
+<pictures/grupo28.jpg, id=672, 457.71pt x 293.59688pt>
 File: pictures/grupo28.jpg Graphic file (type jpg)
 <use pictures/grupo28.jpg>
 Package pdftex.def Info: pictures/grupo28.jpg  used on input line 368.
@@ -1955,7 +1965,7 @@ Package pdftex.def Info: pictures/grupo28.jpg  used on input line 368.
                                                   \fi \fi 
 l.371 \end{figure}
                    <./pictures/ordenaminetoimg.jpg>]
-<pictures/grupo7.jpg, id=678, 376.40625pt x 222.07968pt>
+<pictures/grupo7.jpg, id=679, 376.40625pt x 222.07968pt>
 File: pictures/grupo7.jpg Graphic file (type jpg)
 <use pictures/grupo7.jpg>
 Package pdftex.def Info: pictures/grupo7.jpg  used on input line 377.
@@ -1967,7 +1977,7 @@ Package pdftex.def Info: pictures/grupo7.jpg  used on input line 377.
                                                   \fi \fi 
 l.381 
        <./pictures/grupo28.jpg>]
-<pictures/grupo8.jpg, id=684, 578.91281pt x 414.04688pt>
+<pictures/grupo8.jpg, id=685, 578.91281pt x 414.04688pt>
 File: pictures/grupo8.jpg Graphic file (type jpg)
 <use pictures/grupo8.jpg>
 Package pdftex.def Info: pictures/grupo8.jpg  used on input line 388.
@@ -1979,7 +1989,7 @@ Package pdftex.def Info: pictures/grupo8.jpg  used on input line 388.
                                                   \fi \fi 
 l.392 
        <./pictures/grupo7.jpg>]
-<pictures/grupo19.jpg, id=691, 456.20438pt x 341.77687pt>
+<pictures/grupo19.jpg, id=692, 456.20438pt x 341.77687pt>
 File: pictures/grupo19.jpg Graphic file (type jpg)
 <use pictures/grupo19.jpg>
 Package pdftex.def Info: pictures/grupo19.jpg  used on input line 399.
@@ -1991,7 +2001,7 @@ Package pdftex.def Info: pictures/grupo19.jpg  used on input line 399.
                                                   \fi \fi 
 l.403 
        <./pictures/grupo8.jpg>]
-<pictures/grafotarykdd.jpg, id=697, 444.91219pt x 270.25969pt>
+<pictures/grafotarykdd.jpg, id=698, 444.91219pt x 270.25969pt>
 File: pictures/grafotarykdd.jpg Graphic file (type jpg)
 <use pictures/grafotarykdd.jpg>
 Package pdftex.def Info: pictures/grafotarykdd.jpg  used on input line 407.
@@ -2141,7 +2151,7 @@ Cap\'{\i }tulo 4.
 [74
 
 ]
-<pictures/CoefSilTFidf.png, id=740, 867.24pt x 939.51pt>
+<pictures/CoefSilTFidf.png, id=741, 867.24pt x 939.51pt>
 File: pictures/CoefSilTFidf.png Graphic file (type png)
 <use pictures/CoefSilTFidf.png>
 Package pdftex.def Info: pictures/CoefSilTFidf.png  used on input line 32.
@@ -2153,7 +2163,7 @@ Package pdftex.def Info: pictures/CoefSilTFidf.png  used on input line 32.
                                                   \fi \fi 
 l.36 
      ]
-<pictures/CoefSilgeneral.png, id=747, 867.24pt x 939.51pt>
+<pictures/CoefSilgeneral.png, id=748, 867.24pt x 939.51pt>
 File: pictures/CoefSilgeneral.png Graphic file (type png)
 <use pictures/CoefSilgeneral.png>
 Package pdftex.def Info: pictures/CoefSilgeneral.png  used on input line 40.
@@ -2172,7 +2182,7 @@ d
                                                   \fi \fi 
 l.49 
       <./pictures/CoefSilgeneral.png>]
-<pictures/clasificadoresA.png, id=766, 867.24pt x 505.89pt>
+<pictures/clasificadoresA.png, id=767, 867.24pt x 505.89pt>
 
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
@@ -2184,7 +2194,7 @@ File: pictures/clasificadoresA.png Graphic file (type png)
 <use pictures/clasificadoresA.png>
 Package pdftex.def Info: pictures/clasificadoresA.png  used on input line 337.
 (pdftex.def)             Requested size: 221.93063pt x 350.00621pt.
-<pictures/clasificadoresF1.png, id=767, 867.24pt x 505.89pt>
+<pictures/clasificadoresF1.png, id=768, 867.24pt x 505.89pt>
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
@@ -2208,7 +2218,7 @@ e.4.3}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.346 
        <./pictures/clasificadoresA.png> <./pictures/clasificadoresF1.png>]
-<pictures/matrixbost.jpg, id=786, 578.91281pt x 434.37282pt>
+<pictures/matrixbost.jpg, id=787, 578.91281pt x 434.37282pt>
 File: pictures/matrixbost.jpg Graphic file (type jpg)
 <use pictures/matrixbost.jpg>
 Package pdftex.def Info: pictures/matrixbost.jpg  used on input line 348.
@@ -2269,7 +2279,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 162.
  ) 
 Here is how much of TeX's memory you used:
  11058 strings out of 480790
- 163610 string characters out of 2896832
+ 163526 string characters out of 2896832
  451092 words of memory out of 3000000
  26499 multiletter control sequences out of 15000+200000
  582502 words of font info for 79 fonts, out of 3000000 for 9000
@@ -2295,9 +2305,9 @@ C:/Users/JBARCO/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb>
 ><C:/Users/JBARCO/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb
 ><C:/Users/JBARCO/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pf
 b>
-Output written on tesis.pdf (87 pages, 1651568 bytes).
+Output written on tesis.pdf (87 pages, 1652177 bytes).
 PDF statistics:
- 940 PDF objects out of 1000 (max. 8388607)
+ 941 PDF objects out of 1000 (max. 8388607)
  233 named destinations out of 1000 (max. 500000)
  407 words of extra memory for PDF output out of 10000 (max. 10000000)
 
