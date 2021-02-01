@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/Plantilla.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.ListRolSoftwareTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form" id="form">
+                <p:growl/>
+                <h:panelGroup rendered="#{rolSoftwareController.listar}">
+                    <p:dataTable value="#{rolSoftwareController.items}" var="item" paginator="true" reflow="true" rows="5">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRolSoftwareTitle_idRol}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRol}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRolSoftwareTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+
+                            <h:outputText value=" "/>
+                            <p:commandButton actionListener="#{rolSoftwareController.prepareEdit(item)}" 
+                                             icon="ui-icon-search" title="#{bundle.titleEditar}"
+                                             ajax="true" update="form"/>
+                            <h:outputText value=" "/>
+                            <p:commandButton actionListener="#{rolSoftwareController.prepareDestroy(item)}" 
+                                             icon="ui-icon-circle-close"
+                                             title="#{bundle.ListTipoDocumentoDestroyLink}"
+                                             update="form" ajax="true"
+                                             oncomplete="PF('dlg2').show();"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:commandButton actionListener="#{rolSoftwareController.prepareCreate}"
+                                     value="#{bundle.ListRolSoftwareCreateLink}"
+                                     update=":form"
+                                     ajax="true"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{!rolSoftwareController.listar}">
+                    <p:panel header="#{bundle.panelRoles}">
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="#{bundle.CreateRolSoftwareLabel_descripcion}" for="descripcion" />
+                            <p:inputText id="descripcion" value="#{rolSoftwareController.current.descripcion}" title="#{bundle.CreateRolSoftwareTitle_descripcion}" 
+                                         required="true" 
+                                         requiredMessage="#{bundle.CreateRolSoftwareRequiredMessage_descripcion}"
+                                         style="width: 100%;"/>
+                           
+                            <p:tree value="#{rolSoftwareController.root3}" var="doc"
+                                    selectionMode="checkbox"
+                                    selection="#{rolSoftwareController.selectedNodes2}"
+                                    style="width: 100%;">
+                        
+                                <p:treeNode type="default" icon="ui-icon-document">
+                                    <h:outputText value="#{doc.descripcion}" />
+                                </p:treeNode>
+          
+                            </p:tree>
+                        
+                        </h:panelGrid>
+                        <p:commandButton actionListener="#{rolSoftwareController.create}" value="#{bundle.CreateUsuarioSaveLink}" rendered="#{!rolSoftwareController.editar}" ajax="true" update=":form"/>
+                        <p:commandButton actionListener="#{rolSoftwareController.update}" value="#{bundle.EditUsuarioSaveLink}" rendered="#{rolSoftwareController.editar}" ajax="true" update=":form"/>
+                        <p:commandButton value="#{bundle.btCancelar}" actionListener="#{rolSoftwareController.iniciar}" update="form"/>
+                    </p:panel>
+                </h:panelGroup>
+
+                <p:dialog header="#{bundle.dialogConfirmar}" modal="true" widgetVar="dlg2" appendTo="@(body)">     
+                    <h:panelGrid columns="2">
+                        <p:commandButton action="#{rolSoftwareController.destroy}"  
+                                         value="#{bundle.ListTipoDocumentoDestroyLink}"
+                                         ajax="true" update=":form" process="@this"
+                                         oncomplete="PF('dlg2').hide();"/>
+                        <p:commandButton action="#{rolSoftwareController.iniciar}" value="#{bundle.btCancelarEliminarTipoDOcumeto}" ajax="true" update=":form" immediate="true"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

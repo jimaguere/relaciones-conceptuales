@@ -1,0 +1,114 @@
+%\chapter*{INTRODUCCIÓN}
+%\chapter{INTRODUCCIÓN}
+%\addcontentsline{toc}{chapter}{INTRODUCCIÓN}
+
+
+
+\chapter{INTRODUCCIÓN}
+
+\textbf{Planteamiento del problema}
+En el proceso investigativo realizado en el Grupo de Investigación Aplicada en Sistemas -  GRIAS,  en  la  línea  de  
+investigación  de  Herramientas  y  Sistemas  de  Gestión  de Conocimiento  y  Recuperación  de  Información,
+se  han  desarrollado  dos  proyectos  de investigación financiados por el sistema de investigaciones de la Universidad de Nariño: uno
+por  la  convocatoria  estudiantil  denominado  "Construcción  de  una  Ontología  de Aplicación  que  Soporte 
+la  Búsqueda  Inteligente  sobre  los  Trabajos  de  Grado  de  la Universidad  de  Nariño  denominada  SAWA,  utilizando 
+la  herramienta  de  software  libre Protégé" \cite{cabrera2015swa} y otro en la convocatoria de trabajos de grado denominado
+"UMAYUX: Un Modelo de Software de Gestión de Conocimiento Soportado en una Ontología Dinámica Débilmente Acoplado con un 
+Gestor de Bases de Datos para la Universidad de Nariño" \cite{restrepo2015maskana}.  Estos  proyectos  fueron  delimitados  a  los  trabajos  de  grado 
+del  programa  de Ingeniería de Sistemas de la Universidad de Nariño. Como resultado de estos proyectos se  cuenta  con  MASKANA, 
+un  prototipo  de  gestor  documental  para  recuperación  de información  relacionada  con 
+los  trabajos  de  grado  del  programa  de  Ingeniería  de Sistemas  almacenados  en  formato  digital.  En estos proyectos se dispone 
+de un repositorio textual de documentos no estructurados sin etiqueta de  clase, el cual se limito a encontrar relaciones semánticas
+sin tener en cuenta los conceptos y entidades del conocimiento (NER).
+
+"Los conceptos son elementos esenciales para el reconocimiento del mundo que nos rodea. Ellos constituyen una representación de una clase 
+de cosas. Frecuentemente, se suelen confundir o utilizar indistintamente los términos concepto y palabra. El concepto [escuela],
+por ejemplo, debe ser distinguido de la palabra 'escuela'. [Escuela] es un tipo de [institución educativa]. El concepto [escuela] puede,
+por ejemplo, ser expresado por las palabras 'escuela', 'lugar para educar', 'institución educativa'. 
+Los conceptos están profundamente relacionados unos con otros de manera que la activación de unos genera la 
+activación de otros. Los vínculos que los interconectan se denominan relaciones conceptuales. Este tipo de relaciones no debe 
+ser confundido con las relaciones entre términos o palabras. Mientras que a las primeras se las suele denominar relaciones conceptuales,
+a las segundas se las suele denominar relaciones semánticas. Por ejemplo, las relaciones de sinonimia o de homonimia son
+relaciones semánticas, mientras que las relaciones taxonómicas y 
+temáticas son relaciones primordialmente entre conceptos" \cite{VIVAS2013}.
+
+Se han propuesto diferentes técnicas de minería de textos, en \cite{troyano2003identificacion} 
+describen los enfoques de extracción de NER y conceptos ligados al conocimiento, en \cite{figuerola2004algunas}
+aplican técnicas para extraer palabras clave de documentos textuales.
+En \cite{llorens1998caracteristicas}, \cite{santana2014aplicacion}, \cite{barrera2016mineria} y \cite{rodriguez2018metodos}
+proponen aplicar técnicas de minería de textos para representar documentos no estructurados,
+en \cite{MONTESYGOMEZ2005} y  \cite{munozutilizacion}
+usan grafos conceptuales como representación del contenido de los textos, y obtiene algunos patrones descriptivos de los documentos aplicando varios tipos de operaciones sobre estos grafos.
+
+Estos antecedentes proponen diferentes alternativas de minería de textos pero ninguno de ellos aplicado al dominio de trabajos de grado. 
+
+Esto implico  investigar diferentes técnicas de minería de textos y minería de datos, aplicarlas
+en el repositorio, evaluar su correcto funcionamiento e interpretar los patrones obtenidos generando conocimiento
+útil para el repositorio de la biblioteca Alberto Quijano Guerrero de la universidad de Nariño.
+
+
+\section{Trabajos Relacionados}
+
+Las organizaciones mayormente disponen de información en documentos de texto no estructurado ,
+se encuentran tipificados de esa manera ya que la información contenida en el documento no tiene ningún orden de estructura, ésta
+información tiene mayor riesgo de no ser encontrada por los buscadores, pues no contiene parámetros establecidos que proporcionen
+la información que se está buscando y sea presentada al usuario, por esta razón la minería de texto adquiere un rol importante
+ya que es el proceso de extraer información interesante y conocimiento no trivial de textos no estructurados incluyendo tecnologías 
+para extracción de información, seguimiento de temas, generación automática de resúmenes de textos, categorización,
+agrupamiento , relaciones entre conceptos , visualización y respuesta automática de preguntas .  
+
+\cite{troyano2003identificacion} describe los principales enfoques de extracción y reconocimiento de NER (entidades con nombre ) , 
+el NER desempeña un papel muy importante en diversos problemas relacionados a la búsqueda automática y la categorización de textos.
+ 
+En \cite{figuerola2004algunas} se propone un nuevo método para la caracterización de documentos que sin importar el idioma en el que el 
+documento esté escrito, permite extraer el conjunto de palabras clave más adecuado. Su funcionamiento se basa en una Red Neuronal, que
+luego de ser entrenada es capaz de decidir para cada término del documento si se trata de una palabra clave o no. El ingreso del documento a la Red Neuronal implicó la definición de una representación numérica adecuada que permite medir la participación de un término dentro del documento.
+
+Utilizando  las técnicas de minería de texto se pretende obtener una serie de conjuntos de datos estructurados, 
+para poder aplicar algoritmos de aprendizaje automático como se lo propone en \cite{llorens1998caracteristicas}, 
+\cite{santana2014aplicacion}, \cite{barrera2016mineria} y \cite{rodriguez2018metodos}  logrando una categorización
+y clasificación de documentos adecuada, \cite{ropero2014metodo}  propone un método que relaciona e integra técnicas de procesamiento de lenguaje natural,
+agrupamiento (clustering) y modelos de Markov como una solución de bajo costo, dependiente del dominio, para la evaluación automática 
+de la organización en textos argumentativos. 
+
+Otra propuesta de utilización de minería de texto es la de Grobelnik, Mladenic  and Jermol  \cite{grobelnik2002exploiting}, en la cual se pretende potenciar una aplicación de construcción de ontologías/taxonomía a
+partir de un conjunto de documentos planos, realizar búsquedas en la base de documentos y tratar problemas específicos del lenguaje,
+por su parte \cite{cobo2006tecnicas},\cite{neto2000document} proponen sistemas  para resumir textos, agrupar documentos e interpretar el conocimiento de los grupos obtenidos para una  fácil compresión  por parte  del usuario.
+
+Arco et al.\cite{arco2006agrupamiento} estudia el impacto de la representación del texto en el ámbito de la clasificación no supervisada (CNS) de documentos.
+Tomando como referencia una representación basada en un modelo de espacio vectorial de términos, se analizan diferentes
+técnicas de representación de los datos sobre espacios de menor dimensionalidad (obtenidas mediante técnicas de extracción de
+términos como el Análisis de Semántica Latente, la Factorización en Matrices No Negativas y el Análisis en Componentes Independientes)
+para mejorar la CNS de un corpus de documentos.
+
+
+En \cite{MONTESYGOMEZ2005} y \cite{munozutilizacion} emplean minería de texto para la semejanza entre estructuras semánticas
+usando grafos conceptuales como representación del contenido de los textos, y obtiene algunos patrones descriptivos de los documentos aplicando varios tipos de operaciones sobre estos grafos.
+
+
+
+\textbf{Objetivos}
+ 
+
+\textbf{Objetivo General}
+
+Descubrir relaciones conceptuales entre los trabajos de grado de la Universidad de Nariño (Colombia)
+utilizando técnicas de minería de texto que facilite la recuperación de trabajos de grado
+relacionados con la temática de la búsqueda identificando  similitudes y diferencias  entre ellos.
+
+\textbf{Objetivos específicos}
+\begin{itemize}
+\item Apropiar el conocimiento en algoritmos de minería de texto, algoritmos de agrupación  y aprendizaje automático.
+\item Construir, limpiar y transformar  el repositorio de documentos de trabajos de grado de la universidad de Nariño.
+\item Implementar los algoritmos de minería de texto seleccionados en la herramienta MASKANA.
+\item Descubrir las relaciones conceptuales entre los trabajos de grado y evaluar los resultados.
+\item Elaboración del documento final de tesis.
+\end{itemize}
+
+\textbf{Organización de la tesis}
+
+En el capítulo 2 se elabora un marco teórico referente a minería de textos. 
+En el capítulo 3 se presenta la construcción, limpieza, transformación del corpus de documentos de
+trabajos de grado de la universidad de Nariño y los experimentos realizados. 
+En el capítulo 4 se presentan los resultados.
+En el capítulo 5 se muestra las conclusiones y trabajos futuros en base a los resultados.

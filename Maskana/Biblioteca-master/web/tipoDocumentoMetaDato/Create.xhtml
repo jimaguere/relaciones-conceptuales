@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoDocumentoMetaDatoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoDocumentoMetaDatoLabel_idTipoDocumentoMetaDato}" for="idTipoDocumentoMetaDato" />
+                    <h:inputText id="idTipoDocumentoMetaDato" value="#{tipoDocumentoMetaDatoController.selected.idTipoDocumentoMetaDato}" title="#{bundle.CreateTipoDocumentoMetaDatoTitle_idTipoDocumentoMetaDato}" required="true" requiredMessage="#{bundle.CreateTipoDocumentoMetaDatoRequiredMessage_idTipoDocumentoMetaDato}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoDocumentoMetaDatoLabel_metaDatoIr}" for="metaDatoIr" />
+                    <h:inputText id="metaDatoIr" value="#{tipoDocumentoMetaDatoController.selected.metaDatoIr}" title="#{bundle.CreateTipoDocumentoMetaDatoTitle_metaDatoIr}" required="true" requiredMessage="#{bundle.CreateTipoDocumentoMetaDatoRequiredMessage_metaDatoIr}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoDocumentoMetaDatoLabel_idTipoDoc}" for="idTipoDoc" />
+                    <h:selectOneMenu id="idTipoDoc" value="#{tipoDocumentoMetaDatoController.selected.idTipoDoc}" title="#{bundle.CreateTipoDocumentoMetaDatoTitle_idTipoDoc}" required="true" requiredMessage="#{bundle.CreateTipoDocumentoMetaDatoRequiredMessage_idTipoDoc}">
+                        <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTipoDocumentoMetaDatoLabel_idMetaDato}" for="idMetaDato" />
+                    <h:selectOneMenu id="idMetaDato" value="#{tipoDocumentoMetaDatoController.selected.idMetaDato}" title="#{bundle.CreateTipoDocumentoMetaDatoTitle_idMetaDato}" required="true" requiredMessage="#{bundle.CreateTipoDocumentoMetaDatoRequiredMessage_idMetaDato}">
+                        <f:selectItems value="#{metaDatoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoDocumentoMetaDatoController.create}" value="#{bundle.CreateTipoDocumentoMetaDatoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoDocumentoMetaDatoController.prepareList}" value="#{bundle.CreateTipoDocumentoMetaDatoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoDocumentoMetaDatoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,84 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+
+        <title>
+
+        </title>        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript"> 
+            function leerGET(){ 
+                var cadGET = location.search.substr(1,location.search.length);                
+                document.getElementById('IdEndSession').style.display ='none';
+                document.getElementById('IdCloseSession').style.display ='none';
+                document.getElementById('IdNoSession').style.display ='none';       
+                if(cadGET.indexOf("timeout") !== -1){
+                    document.getElementById('IdEndSession').style.display ='block';
+                }
+                if(cadGET.indexOf("close") !== -1){
+                    document.getElementById('IdCloseSession').style.display ='block';
+                }
+                if(cadGET.indexOf("nosession") !== -1){
+                    document.getElementById('IdNoSession').style.display ='block';
+                }
+            } 
+        </script> 
+    </head>
+    <body onload="leerGET();">
+        <div style=" 
+             position:absolute;
+
+             left: 50%; 
+             margin-left: -30%;  
+             top: 35%;
+             margin-top: -190px;
+             ">
+            <img src="./resources/img/biblioteca.png" />   
+
+            <div>       
+                <center>
+                    <table>
+                        <tr>
+                            <td><img src="./resources/img/logo.png" />  </td>
+                            <td>   <a href="biblioteca/index.xhtml">                     
+                                    <img src="resources/img/btn_inicio_1.png" />                
+                                </a></td>
+                        </tr>
+                    </table>
+                </center>
+
+            </div>
+
+            <img src="./resources/img/piep.png" />   
+        </div>
+        <div style="
+             display: none;
+             position: absolute;
+             top: 10px;
+             right: 10px;"
+             id="IdEndSession">
+            <img src="resources/img/timeout_sesion.png" />                
+        </div>
+        <div style="
+             display: none;
+             position: absolute;
+             top: 10px;
+             right: 10px;"
+             id="IdCloseSession">
+            <img src="resources/img/close_sesion.png" />                
+        </div>
+        <div style="
+             display: none;
+             position: absolute;
+             top: 10px;
+             right: 10px;"
+             id="IdNoSession">
+            <img src="resources/img/no_sesion.png" />                
+        </div>
+    </body>
+</html>

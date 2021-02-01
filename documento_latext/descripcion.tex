@@ -1,0 +1,63 @@
+\chapter{Descripción del problema}
+
+
+\section{Planteamiento del problema}
+
+Se han propuesto algoritmos con el fin de descubrir patrones de agrupación analizando conjuntos de  datos con
+el fin de encontrar los discos que se pueden unir entre instantes de tiempo consecutivos. El número de discos
+posibles en un intervalo de tiempo dado puede ser bastante grande y el costo de unir los discos entre
+los intervalos de tiempo puede llegar a ser muy alto. Manejar y analizar todas las combinaciones posibles tiene
+un impacto directo en el rendimiento de los algoritmos. \cite{vieira2009line},  \cite{benkert2008reporting}
+han probado algunas heurísticas y aproximaciones
+encaminadas a reducir el número de discos evaluados.  \cite{romero2011mining} define una  metodología para
+extraer patrones
+de agrupación en conjuntos de datos de trayectoria basados en patrones frecuentes, el cual es un tema frecuentemente 
+abordado en la minería de datos, con el objetivo de hacer frente a los inconvenientes antes mencionados. 
+
+Sin  embargo,  el  número  y  la  calidad  de  los  patrones  descubiertos  hacen
+particularmente difícil realizar una correcta interpretación de los resultados. Igualmente,
+en \cite{vieira2009line} los resultados experimentales presentados en los anteriores trabajos muestran
+que  todavía  existe  una  alta  complejidad  computacional  a  la  hora  de  efectuar  la
+combinación  de  los  discos.  Esto  repercute  en  altos  tiempos  de  respuesta  y  un  alto
+número  de  patrones  resultantes  que  hace  particularmente  dificil  su  interpretacion.
+Inclusive, en \cite{romero2011mining} es necesario aplicar una etapa de postprocesamiento para descartar
+patrones redundantes.
+
+En  esta  investigación  se  propone  un  algoritmo  con  el  fin  de  encontrar  el  número  de
+discos posibles en un intervalo de tiempo, mejorar la combinación de los mismos y por
+ende su rendimiento sin perder la calidad del patrón encontrado. El algoritmo propuesto
+será evaluado y comparado con los algoritmos propuestos en \cite{vieira2009line} y 
+\cite{romero2011mining}.
+
+
+\section{Objetivo general}
+
+Proponer un algoritmo para el descubrimiento de patrones de agrupación de objetos móviles en bases 
+de datos espacio temporales.
+
+\section{Objetivos Específicos}
+
+\begin{itemize}
+ \item Apropiar el conocimiento en bases de datos espacio temporales, trayectorias y patrones de 
+agrupamiento en objetos móviles.
+ \item Implementar y evaluar los algoritmos seleccionados con el fin de identificar los problemas 
+asociados a su rendimiento y su posterior comparación con la propuesta realizada.
+ \item Diseñar el algoritmo para el descubrimiento de patrones de agrupación en objetos en 
+movimiento.
+ \item  Comparar los tiempos de respuesta y la claridad de los patrones obtenidos del algoritmo 
+propuesto con respecto a los algoritmos existentes que fueron seleccionados.
+\end{itemize}
+
+
+\section{Organización del documento}
+
+En el capítulo dos, se presenta la fundamentación teórica. En el capítulo tres, los trabajos 
+realacionados sobre patrones de agrupamiento en objetos móviles. En el capítulo cuatro, se presenta
+la metodología utilizada en la investigación. En el capítulo cinco, se describe la
+alternativa propuesta en este proyecto denominada FPFlock con sus dos variaciones, una en línea y 
+otra fuera de línea. En el capítulo seis, se presenta la experimentación computacional utilizando 
+base de datos sintéticas y reales. En el capítulo siete, se enumeran los productos obtenidos a lo 
+largo de la investigación. En el capítulo ocho, se muestra la discución sobre la experimentación 
+computacional. En el capítulo nueve, se presentan las conclusiones y trabajos futuros, y por 
+último se muestran las referencias bibliográficas y los anexos.  
+

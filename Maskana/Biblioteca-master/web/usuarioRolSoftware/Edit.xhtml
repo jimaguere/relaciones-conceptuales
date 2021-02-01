@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuarioRolSoftwareTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsuarioRolSoftwareLabel_usuarioRolSoftwarePK_idUsuarioRolSoftware}" for="usuarioRolSoftwarePK_idUsuarioRolSoftware" />
+                    <h:inputText id="usuarioRolSoftwarePK_idUsuarioRolSoftware" value="#{usuarioRolSoftwareController.selected.usuarioRolSoftwarePK.idUsuarioRolSoftware}" title="#{bundle.EditUsuarioRolSoftwareTitle_usuarioRolSoftwarePK_idUsuarioRolSoftware}" required="true" requiredMessage="#{bundle.EditUsuarioRolSoftwareRequiredMessage_usuarioRolSoftwarePK_idUsuarioRolSoftware}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioRolSoftwareLabel_usuario1}" for="usuario1" />
+                    <h:selectOneMenu id="usuario1" value="#{usuarioRolSoftwareController.selected.usuario1}" title="#{bundle.EditUsuarioRolSoftwareTitle_usuario1}" required="true" requiredMessage="#{bundle.EditUsuarioRolSoftwareRequiredMessage_usuario1}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditUsuarioRolSoftwareLabel_rolSoftware}" for="rolSoftware" />
+                    <h:selectOneMenu id="rolSoftware" value="#{usuarioRolSoftwareController.selected.rolSoftware}" title="#{bundle.EditUsuarioRolSoftwareTitle_rolSoftware}" required="true" requiredMessage="#{bundle.EditUsuarioRolSoftwareRequiredMessage_rolSoftware}">
+                        <f:selectItems value="#{rolSoftwareController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{usuarioRolSoftwareController.update}" value="#{bundle.EditUsuarioRolSoftwareSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsuarioRolSoftwareViewLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioRolSoftwareController.prepareList}" value="#{bundle.EditUsuarioRolSoftwareShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsuarioRolSoftwareIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

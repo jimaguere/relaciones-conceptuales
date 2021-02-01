@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta content='text/html; charset=iso-8859-1' http-equiv="Content-Type"/>
+        <title><ui:insert name="title"></ui:insert></title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+
+    <h:body onload="PF('dlg2').show();">
+        <p:galleria value="#{imagesView.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
+            <p:graphicImage name="demo/images/nature/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+        </p:galleria>
+    </h:body>
+
+</html>

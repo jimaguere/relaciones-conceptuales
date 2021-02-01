@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../Plantilla.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.ListTipoDocumentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <br/>       
+            <h:form styleClass="jsfcrud_list_form" id="form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <p:messages/>
+                </h:panelGroup>
+
+                <p:panel rendered="#{tipoDocumentoController.listar}" header="#{bundle.panelTipoDocumento}">
+                    <p:dataTable value="#{tipoDocumentoController.items}" var="item" emptyMessage="#{bundle.ListTipoDocumentoEmpty}"
+                                 paginator="true" rows="5">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoDocumentoTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoDoc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoDocumentoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <p:commandButton actionListener="#{tipoDocumentoController.prepareEdit}" 
+                                           icon="ui-icon-pencil"
+                                           update="form" ajax="true"
+                                           title="#{bundle.ListTipoDocumentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <p:commandButton actionListener="#{tipoDocumentoController.prepareDestroy}" icon="ui-icon-circle-close"
+                                             title="#{bundle.ListTipoDocumentoDestroyLink}"
+                                             update="form" ajax="true"
+                                             oncomplete="PF('dlg2').show();"
+                                            /><br/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <br />
+                    <p:commandButton actionListener="#{tipoDocumentoController.prepareCreate}" value="#{bundle.ListTipoDocumentoCreateLink}" update="form" ajax="true"/>
+
+                </p:panel>
+
+                <p:panel rendered="#{!tipoDocumentoController.listar}" header="#{bundle.panelTipoDocumento}">
+                    <h:panelGrid columns="2">
+                        
+                        <h:outputLabel value="#{bundle.CreateTipoDocumentoLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{tipoDocumentoController.selected.nombre}" title="#{bundle.CreateTipoDocumentoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateTipoDocumentoRequiredMessage_nombre}"/>
+                        <h:panelGroup/>
+                        <p:pickList id="metaPickList" value="#{tipoDocumentoController.metaDatos}"
+                                                var="metaDato"
+                                                itemValue="#{metaDato}" itemLabel="#{metaDato.descripcion}"
+                                                converter="metaDatoConverter"
+                                                >
+                                        <f:facet name="sourceCaption">#{bundle.panelMetaDatoSource}</f:facet>
+                                        <f:facet name="targetCaption">#{bundle.panelMetaDatoTarget}</f:facet>
+                                        <p:column>
+                                            <h:outputText value="#{metaDato.descripcion}" />
+                                        </p:column>
+                      </p:pickList>
+                    </h:panelGrid>
+                    <br />
+                    <p:commandButton action="#{tipoDocumentoController.create}" value="#{bundle.CreateTipoDocumentoSaveLink}" ajax="true" update=":form" rendered="#{tipoDocumentoController.bnuevo}"/>
+                    <p:commandButton action="#{tipoDocumentoController.update}" value="#{bundle.EditTipoDocumentoSaveLink}" ajax="true" update=":form" rendered="#{!tipoDocumentoController.bnuevo}"/>
+                    <p:commandButton action="#{tipoDocumentoController.prepareList}" value="#{bundle.btTipoDocumentoVolver}" ajax="true" update=":form" immediate="true"/>
+                </p:panel>
+                
+                <p:dialog header="#{bundle.dialogConfirmar}" modal="true" widgetVar="dlg2" appendTo="@(body)">     
+                    <h:panelGrid columns="2">
+                         <p:commandButton action="#{tipoDocumentoController.destroy}"                                              value="#{bundle.ListTipoDocumentoDestroyLink}"
+                                          ajax="true" update=":form" process="@this"
+                                             oncomplete="PF('dlg2').hide();"/>
+                         <p:commandButton action="#{tipoDocumentoController.prepareList}" value="#{bundle.btCancelarEliminarTipoDOcumeto}" ajax="true" update=":form" immediate="true"/>
+                    </h:panelGrid>
+                    
+                </p:dialog>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

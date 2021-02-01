@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/Plantilla.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.ListUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form" id="form">
+                <p:growl/>
+                <h:panelGroup rendered="#{usuarioSistemaControlador.listar}" >
+
+                    <p:dataTable value="#{usuarioSistemaControlador.usuariosSistema}" var="item" 
+                                 reflow="true" rows="5" paginator="true">
+                        
+                        <p:column headerText="#{bundle.ListUsuarioTitle_usuario}">
+                            <h:outputText value="#{item.usuario}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioTitle_nombres}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombres}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioTitle_apellidos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellidos}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioTitle_institucion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.institucion}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioTitle_profesion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profesion}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioTitle_fechaVigencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaVigencia}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <p:commandButton actionListener="#{usuarioSistemaControlador.prepareEdit(item)}" icon="ui-icon-search" title="#{bundle.titleEditar}"
+                                             ajax="true" update="form"
+                                             />
+                            <h:outputText value=" "/>
+                            <p:commandButton actionListener="#{usuarioSistemaControlador.prepareDestroy(item)}" icon="ui-icon-circle-close"
+                                             title="#{bundle.ListTipoDocumentoDestroyLink}"
+                                             update="form" ajax="true"
+                                             oncomplete="PF('dlg2').show();"
+                                             /><br/>
+                        </p:column>
+                        
+                    </p:dataTable>
+
+                    <br />
+                    <p:commandButton actionListener="#{usuarioSistemaControlador.prepareCreate}" value="#{bundle.ListUsuarioCreateLink}" ajax="true" 
+                                     update="form"/>   
+
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{!usuarioSistemaControlador.listar}" >
+                    <p:panel header="#{bundle.tabUsuario}">
+                        <p:wizard flowListener="#{usuarioSistemaControlador.onFlowProcess}" 
+                                  backLabel="#{bundle.btWizardAtras}"
+                                  nextLabel="#{bundle.btWizardSigui}"
+                                  id="wizard"
+                                  >
+                            <p:tab title="#{bundle.tabUsuario}">
+                                <p:fieldset>
+                                    <p:panelGrid columns="1">
+                                        <h:panelGrid columns="3">
+                                            <p:message for="nombres"/>
+                                            <p:message for="apellidos"/>
+                                            <p:message for="correoElectronico"/>
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_nombres}" for="nombres" />
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_apellidos}" for="apellidos" />
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_correoElectronico}" for="correoElectronico" />
+                                            <p:inputText id="nombres" value="#{usuarioSistemaControlador.usuario.nombres}" title="#{bundle.CreateUsuarioTitle_nombres}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nombres}"/>
+                                            <p:inputText id="apellidos" value="#{usuarioSistemaControlador.usuario.apellidos}" title="#{bundle.CreateUsuarioTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apellidos}"/>
+
+
+                                            <p:inputText id="correoElectronico" value="#{usuarioSistemaControlador.usuario.correoElectronico}" title="#{bundle.CreateUsuarioTitle_correoElectronico}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_correoElectronico}">
+                                                <f:validator validatorId="emailValidator"/>
+                                            </p:inputText>
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2">
+                                            <p:message for="institucion"/>
+                                            <p:message for="profesion"/>
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_institucion}" for="institucion" />
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_profesion}" for="profesion" />
+                                            <p:inputText id="institucion" value="#{usuarioSistemaControlador.usuario.institucion}" title="#{bundle.CreateUsuarioTitle_institucion}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_institucion}"/>
+                                            <p:inputText id="profesion" value="#{usuarioSistemaControlador.usuario.profesion}" title="#{bundle.CreateUsuarioTitle_profesion}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_profesion}"/>
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2">
+                                            <p:message for="fechaCreacion"/>
+                                            <p:message for="fechaVigencia"/>
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_fechaCreacion}" for="fechaCreacion" />
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_fechaVigencia}" for="fechaVigencia" />
+                                            <p:calendar id="fechaCreacion" value="#{usuarioSistemaControlador.usuario.fechaCreacion}" title="#{bundle.CreateUsuarioTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_fechaCreacion}"
+                                                        disabled="true">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </p:calendar>
+                                            <p:calendar id="fechaVigencia" value="#{usuarioSistemaControlador.usuario.fechaVigencia}" title="#{bundle.CreateUsuarioTitle_fechaVigencia}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_fechaVigencia}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </p:calendar>
+                                        </h:panelGrid>
+
+                                        <h:panelGroup/>       
+                                    </p:panelGrid>
+                                </p:fieldset>
+                            </p:tab>
+
+                            <p:tab title="#{bundle.panelRolSource}">
+                                <p:fieldset>
+                                    <h:panelGrid columns="2">
+
+
+                                        <p:pickList id="metaPickList" value="#{usuarioSistemaControlador.roles}"
+                                                    var="rol"
+                                                    itemValue="#{rol}" itemLabel="#{rol.descripcion}"
+                                                    converter="rolConverter"
+                                                    >
+                                            <f:facet name="sourceCaption">#{bundle.panelRolSource}</f:facet>
+                                            <f:facet name="targetCaption">#{bundle.panelRolTarget}</f:facet>
+                                            <p:column>
+                                                <h:outputText value="#{rol.descripcion}" />
+                                            </p:column>
+                                        </p:pickList>
+
+                                    </h:panelGrid>
+                                </p:fieldset>
+
+
+
+                            </p:tab>
+                            <p:tab title="#{bundle.tabSeguridad}">
+                                <p:fieldset>
+                                    <h:panelGrid columns="2">
+                                        <p:message for="clave"/>
+                                        <p:message for="claveConf"/>
+                                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_clave}" for="clave" />
+                                        <p:outputLabel value="#{bundle.labelConfirmarClave}" for="claveConf" />
+                                        <p:password id="clave" value="#{usuarioSistemaControlador.usuario.clave}" title="#{bundle.CreateUsuarioTitle_clave}" 
+                                                    required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}"
+                                                    validator="paswordValidation"/>
+                                        <p:password id="claveConf"  
+                                                    title="#{bundle.CreateUsuarioTitle_clave}" 
+                                                    required="true"
+                                                    requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}"
+                                                    immediate="true" value="#{usuarioSistemaControlador.confirmarClave}"/>    
+                                    </h:panelGrid> 
+                                </p:fieldset>
+                            </p:tab>
+
+                            <p:tab title="#{bundle.tabConfirmar}">
+                                <p:fieldset>
+                                    <p:panelGrid columns="1">
+                                        <h:panelGrid columns="2">
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_nombres}" for="nombresO" />
+                                            <h:outputText id="nombresO" value="#{usuarioSistemaControlador.usuario.nombres}" title="#{bundle.CreateUsuarioTitle_nombres}"/>
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_apellidos}" for="apellidosO" />
+                                            <h:outputText id="apellidosO" value="#{usuarioSistemaControlador.usuario.apellidos}" title="#{bundle.CreateUsuarioTitle_apellidos}"/>
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_correoElectronico}" for="correoElectronicoO" />                                     
+                                            <h:outputText id="correoElectronicoO" value="#{usuarioSistemaControlador.usuario.correoElectronico}" title="#{bundle.CreateUsuarioTitle_correoElectronico}"/>         
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2">
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_institucion}" for="institucionO" />
+                                            <h:outputText id="institucionO" value="#{usuarioSistemaControlador.usuario.institucion}" title="#{bundle.CreateUsuarioTitle_institucion}"/>
+                                            <p:outputLabel value="#{bundle.CreateUsuarioLabel_profesion}" for="profesionO" />
+                                            <h:outputText id="profesionO" value="#{usuarioSistemaControlador.usuario.profesion}" title="#{bundle.CreateUsuarioTitle_profesion}"/>
+                                        </h:panelGrid>
+
+                                        <h:panelGroup/>       
+                                    </p:panelGrid>
+                                </p:fieldset>
+                                <p:commandButton actionListener="#{usuarioSistemaControlador.create}" value="#{bundle.CreateUsuarioSaveLink}" rendered="#{!usuarioSistemaControlador.editar}" ajax="true" update=":form"/>
+                                <p:commandButton actionListener="#{usuarioSistemaControlador.update}" value="#{bundle.EditUsuarioViewLink}" rendered="#{usuarioSistemaControlador.editar}" ajax="true" update=":form"/>
+                                <p:commandButton value="#{bundle.btCancelar}" actionListener="#{usuarioSistemaControlador.iniciar}" update=":form" ajax="true" immediate="true" process="@this"/>
+                            </p:tab>
+
+                        </p:wizard>
+
+                    </p:panel>
+                </h:panelGroup>
+                <p:dialog header="#{bundle.dialogConfirmar}" modal="true" widgetVar="dlg2" appendTo="@(body)">     
+                    <h:panelGrid columns="2">
+                        <p:commandButton action="#{usuarioSistemaControlador.destroy}"  
+                                         value="#{bundle.ListTipoDocumentoDestroyLink}"
+                                         ajax="true" update=":form" process="@this"
+                                         oncomplete="PF('dlg2').hide();"/>
+                        <p:commandButton action="#{usuarioSistemaControlador.iniciar}" value="#{bundle.btCancelarEliminarTipoDOcumeto}" ajax="true" update=":form" immediate="true"/>
+                    </h:panelGrid>
+
+                </p:dialog>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

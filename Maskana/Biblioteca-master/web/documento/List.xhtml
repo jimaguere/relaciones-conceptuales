@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <body>
+        <h:head>
+            <meta content='text/html; charset=iso-8859-1' http-equiv="Content-Type"/>
+        </h:head>
+        <ui:composition template="./../Plantilla.xhtml">
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.titleBuscador}"></h:outputText>
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <center>
+                    <h:form id="form">
+                        <p:growl/>
+                        <p:panel header="#{bundle.panelDocumentos}" rendered="#{!buscadorControlador.btBusqueda and documentoController.listar}">
+                            <h:panelGrid columns="1">        
+                                <p:selectOneRadio value="#{buscadorControlador.tipoDocumento.idTipoDoc}"
+                                                  id="tipoMat"
+                                                  >
+                                    <f:selectItem itemValue="-1" itemLabel="General"/>
+                                    <f:selectItems value="#{buscadorControlador.listaTipoDocumento}"
+                                                   var="tipoDocumento"
+                                                   itemLabel="#{tipoDocumento.nombre}"
+                                                   itemValue="#{tipoDocumento.idTipoDoc}"
+                                                   />
+                                    <p:ajax update="form:metaDat" listener="#{buscadorControlador.actualizarTipoDocumento}"/>
+                                </p:selectOneRadio>
+                                <h:panelGroup/>
+                                <p:selectOneRadio value="#{buscadorControlador.metaDato.idMetaDato}"
+                                                  id="metaDat">
+                                    <f:selectItem itemValue="-1" itemLabel="Contenido"/>
+                                    <f:selectItems value="#{buscadorControlador.tipoDocumento.tipoDocumentoMetaDatoList}"
+                                                   var="metaDato"
+                                                   itemLabel="#{metaDato.idMetaDato.descripcion}"
+                                                   itemValue="#{metaDato.idMetaDato.idMetaDato}"
+                                                   />
+                                </p:selectOneRadio>
+
+                                <p:autoComplete  styleClass="buscador"
+                                                 label="#{bundle.labelBuscar}"
+                                                 size="45"
+                                                 required="true"
+                                                 requiredMessage="#{bundle.valorBusquedaRequerido}"
+                                                 value="#{buscadorControlador.cadenaBusqueda}"
+                                                 />
+
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="2">
+                                <h:outputText value="#{bundle.labelBuscarPor}" />
+                                <h:selectOneRadio style="height: 50px" value="#{buscadorControlador.contenido}">
+                                    <f:selectItem itemLabel="#{bundle.itemFraseCompleta}" itemValue="1"/>  
+                                    <f:selectItem itemLabel="#{bundle.itemCualquierFrase}" itemValue="2" />  
+                                </h:selectOneRadio>  
+                            </h:panelGrid>
+
+                            <p:commandButton
+                                value="#{bundle.btBuscar}"
+                                ajax="true"
+                                style="width: 150px"
+                                actionListener="#{buscadorControlador.buscar}"
+                                update="form"
+                                />
+                            <p:commandButton actionListener="#{documentoController.prepareCreate}" 
+                                             value="#{bundle.ListDocumentoCreateLink}"
+                                             ajax="true"
+                                             immediate="true"
+                                             style="width: 150px"
+                                             update="form"/>
+                        </p:panel>
+
+                        <p:panel header="#{bundle.panelDocumentos}" rendered="#{buscadorControlador.btBusqueda and documentoController.listar}">
+                            <h:panelGrid columns="2">
+                                <p:selectOneRadio value="#{buscadorControlador.tipoDocumento.idTipoDoc}"
+                                                  id="tipoMatR"
+                                                  >
+                                    <f:selectItem itemValue="-1" itemLabel="General"/>
+                                    <f:selectItems value="#{buscadorControlador.listaTipoDocumento}"
+                                                   var="tipoDocumento"
+                                                   itemLabel="#{tipoDocumento.nombre}"
+                                                   itemValue="#{tipoDocumento.idTipoDoc}"
+                                                   />
+                                    <p:ajax update="form:metaDatR" listener="#{buscadorControlador.actualizarTipoDocumento}"/>
+                                </p:selectOneRadio>
+
+                                <h:panelGroup/>
+                                <p:selectOneRadio value="#{buscadorControlador.metaDato.idMetaDato}"
+                                                  id="metaDatR">
+                                    <f:selectItem itemValue="-1" itemLabel="Contenido"/>
+                                    <f:selectItems value="#{buscadorControlador.tipoDocumento.tipoDocumentoMetaDatoList}"
+                                                   var="metaDato"
+                                                   itemLabel="#{metaDato.idMetaDato.descripcion}"
+                                                   itemValue="#{metaDato.idMetaDato.idMetaDato}"
+                                                   />
+                                </p:selectOneRadio>
+                                <h:panelGroup/>
+                                <p:autoComplete  styleClass="buscador"
+                                                 label="#{bundle.labelBuscar}"
+                                                 size="45"
+                                                 required="true"
+                                                 requiredMessage="#{bundle.valorBusquedaRequerido}"
+                                                 value="#{buscadorControlador.cadenaBusqueda}"
+                                                 />
+
+                                <h:panelGroup/>
+
+
+                            </h:panelGrid>
+                            <h:selectOneRadio style="height: 50px" value="#{buscadorControlador.contenido}">
+                                <f:selectItem itemLabel="#{bundle.itemFraseCompleta}" itemValue="1"/>  
+                                <f:selectItem itemLabel="#{bundle.itemCualquierFrase}" itemValue="2" />  
+                            </h:selectOneRadio> 
+
+                            <p:commandButton
+                                value="#{bundle.btBuscar}"
+                                ajax="true"
+                                style="width: 150px"
+                                actionListener="#{buscadorControlador.buscar}"
+                                update="form"
+                                />
+                            <p:commandButton actionListener="#{documentoController.prepareCreate}" 
+                                             value="#{bundle.ListDocumentoCreateLink}"
+                                             ajax="true"
+                                             immediate="true"
+                                             style="width: 150px"
+                                             update="form"/>
+
+                        </p:panel>
+
+                        <p:dataGrid value="#{buscadorControlador.listaDocuementos}" 
+                                    rendered="#{buscadorControlador.btBusqueda and !buscadorControlador.seleccionDocumento and documentoController.listar}"
+                                    var="item" emptyMessage="#{bundle.ListDocumentoEmpty}"
+                                    columns="1"
+                                    layout="grid"
+                                    paginator="true"
+                                    rows="5"
+                                    >
+                            <p:panel  style="text-align:center">
+                                <h:panelGrid columns="2">
+                                    <h:panelGrid columns="2">
+                                        <p:commandButton icon="ui-icon-search" title="#{item.idDocumento}"
+                                                         ajax="true" update="form"
+                                                         actionListener="#{documentoController.prepareEdit(item)}"/>
+                                        <p:commandButton action="#{documentoController.prepareDestroy(item)}"
+                                                         icon="ui-icon-circle-close"
+                                                         title="#{bundle.ListDocumentoDestroyLink}"
+                                                         ajax="true"
+                                                         update="form"
+                                                         oncomplete="PF('dlg2').show();"/>
+                                    </h:panelGrid>
+                                    <h:outputText value="#{item.metaDatosDocumentos}"/>
+                                </h:panelGrid>
+                            </p:panel>
+
+                        </p:dataGrid>           
+
+                        <h:panelGroup rendered="#{!documentoController.listar}">
+                            <p:wizard flowListener="#{documentoController.onFlowProcess}" 
+                                      backLabel="#{bundle.btWizardAtras}"
+                                      nextLabel="#{bundle.btWizardSigui}"
+                                      id="wizard"
+                                      >
+                                <p:tab id="tipo_documento" title="#{bundle.tabHeaderTipoDocumento}">
+                                    <p:growl id="growl"/>
+                                    <p:panel>
+                                        <h:panelGrid columns="2">
+                                            <p:outputLabel for="tipoDocumento" value="#{bundle.labelTipoDocumentoValue}"/>
+                                            <p:selectOneMenu id="tipoDocumento" 
+                                                             required="true"
+                                                             requiredMessage="#{bundle.requiredTipoDocumentoVal}"
+                                                             value="#{documentoController.selected.idTipoDoc.idTipoDoc}">
+                                                <f:selectItem  itemLabel="#{bundle.comboSelecion}"/>
+                                                <f:selectItems value="#{documentoController.tiposDocumentos}" var="tipo" 
+                                                               itemValue="#{tipo.idTipoDoc}" 
+                                                               itemLabel="#{tipo.nombre}"/>
+                                            </p:selectOneMenu>
+
+
+                                            <p:outputLabel for="archivo" value="#{bundle.labelArchivoValue}"/>
+                                            <p:fileUpload
+                                                id="archivo"
+                                                allowTypes="/(\.|\/)(pdf|PDF)$/"
+                                                mode="advanced" dragDropSupport="false" 
+                                                required="true"
+                                                label="#{bundle.labelFileUpload}"
+                                                cancelLabel="#{bundle.cancelFileUpload}"
+                                                uploadLabel="#{bundle.uploadLabelFileUpoad}"
+                                                requiredMessage="#{bundle.requiredArchivoVal}"
+                                                invalidFileMessage="#{bundle.invalidFileVal}"               
+                                                multiple="true"                
+                                                fileUploadListener="#{documentoController.handleFileUpload}"
+                                                update="growl,nombreArchivo"
+                                                />
+
+                                            <p:outputLabel id="nombreArchivo"
+                                                           value="#{documentoController.archivoDocumento.fileName}"
+                                                           rendered="#{documentoController.archivoDocumento!=null}"/>
+
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </p:tab>
+
+                                <p:tab id="meta_dato" title="#{bundle.tabHeaderMetaDatosDocumento}">
+                                    <p:panel>
+                                        <p:growl/>
+                                        <p:dataTable value="#{documentoController.selected.documentoValorMetaDatoList}"
+                                                     var="valorMetaDato" editable="true" reflow="true"
+                                                     editMode="cell">
+                                            <p:column style="width: 30%;">
+                                                <p:cellEditor>
+                                                    <f:facet name="output">
+                                                        <h:outputText value="#{valorMetaDato.idMetaDato.descripcion}"/>
+                                                    </f:facet>
+                                                    <f:facet name="input">
+                                                        <h:outputText value="#{valorMetaDato.idMetaDato.descripcion}"/>
+                                                    </f:facet>
+                                                </p:cellEditor>
+                                            </p:column>
+
+                                            <p:column style="width: 70%;">
+                                                <p:cellEditor>
+                                                    <f:facet name="output">
+                                                        <h:outputText value="#{valorMetaDato.valorMetaDato}"
+                                                                      rendered="#{valorMetaDato.idMetaDato.idTipoDato.idTipoDato.intValue()==documentoController.constanteTipoDatoCadena}"/>
+                                                        <h:outputText value="#{fechaControlador.fecha(valorMetaDato.fechaMetaDato)}"
+                                                                      rendered="#{valorMetaDato.idMetaDato.idTipoDato.idTipoDato.intValue()!=documentoController.constanteTipoDatoCadena}"/>
+                                                    </f:facet>
+                                                    <f:facet name="input">
+                                                        <p:inputTextarea value="#{valorMetaDato.valorMetaDato}" style="width: 100%;"
+                                                                         required="true"
+
+                                                                         rendered="#{valorMetaDato.idMetaDato.idTipoDato.idTipoDato.intValue()==documentoController.constanteTipoDatoCadena}"/>
+                                                        <p:calendar value="#{valorMetaDato.fechaMetaDato}" style="width: 100%;"
+                                                                    required="true"  
+                                                                    readonlyInput="true"                                              
+                                                                    rendered="#{valorMetaDato.idMetaDato.idTipoDato.idTipoDato.intValue()!=documentoController.constanteTipoDatoCadena}"/>
+                                                    </f:facet>
+                                                </p:cellEditor>
+                                            </p:column>                                  
+
+                                        </p:dataTable>
+                                    </p:panel>
+                                </p:tab>
+
+                                <p:tab id="confirm" title="#{bundle.tabConfimacion}">
+                                    <p:panel>
+                                        <h:panelGrid columns="2">
+                                            <p:outputLabel  value="#{bundle.labelTipoDocumentoValue}"/>
+                                            <h:outputText value="#{documentoController.selected.idTipoDoc.nombre}"/>
+                                            <p:outputLabel  value="#{bundle.labelArchivoAdjunto}" rendered="#{documentoController.archivoDocumento!=null}"/>
+                                            <h:outputText value="#{documentoController.archivoDocumento.fileName}" rendered="#{documentoController.archivoDocumento!=null}"/>
+                                            <p:outputLabel  value="#{bundle.labelTamañoArchivo}" rendered="#{documentoController.archivoDocumento!=null}"/>
+                                            <h:outputText value="#{documentoController.tamanioArchivo}" rendered="#{documentoController.archivoDocumento!=null}"/>
+
+                                        </h:panelGrid>
+                                        <p:dataTable value="#{documentoController.selected.documentoValorMetaDatoList}"
+                                                     var="valorMetaDato"  reflow="true">
+                                            <p:column style="width: 30%;">  
+                                                <h:outputText value="#{valorMetaDato.idMetaDato.descripcion}"/>
+                                            </p:column>
+
+                                            <p:column style="width: 70%;">                       
+                                                <h:outputText value="#{valorMetaDato.valorMetaDato}"
+                                                              rendered="#{valorMetaDato.idMetaDato.idTipoDato.idTipoDato.intValue()==documentoController.constanteTipoDatoCadena}"/>
+                                                <h:outputText value="#{fechaControlador.fecha(valorMetaDato.fechaMetaDato)}"
+                                                              rendered="#{valorMetaDato.idMetaDato.idTipoDato.idTipoDato.intValue()!=documentoController.constanteTipoDatoCadena}"/>
+                                            </p:column>                                  
+
+                                        </p:dataTable>
+                                        <br/>
+                                        <p:remoteCommand name="iniciar" delay="2000" onstart="document.location.href = document.location.href;"
+                                                         />
+                                        <p:commandButton ajax="true"
+                                                         update="form"
+                                                         value="#{bundle.btConfirmar}"
+                                                         actionListener="#{documentoController.create}"
+                                                         onclick="iniciar()"
+                                                         rendered="#{documentoController.nuevo}"/>
+                                        <p:commandButton ajax="true"
+                                                         update="form"
+                                                         value="#{bundle.btConfirmar}"
+                                                         actionListener="#{documentoController.update}"
+                                                         onclick="iniciar()"
+                                                         rendered="#{!documentoController.nuevo}"
+                                                         />
+                                    </p:panel>
+                                </p:tab>
+
+                            </p:wizard>
+                        </h:panelGroup>
+                        <p:remoteCommand name="iniciar" delay="2000" onstart="document.location.href = document.location.href;"
+                                         />
+                        <p:dialog header="#{bundle.dialogConfirmar}" modal="true" widgetVar="dlg2" appendTo="@(body)">     
+
+                            <h:panelGrid columns="2">
+                                <p:commandButton action="#{documentoController.destroy}"  
+                                                 value="#{bundle.ListTipoDocumentoDestroyLink}"
+                                                 ajax="true" update=":form" process="@this"
+                                                 onclick="iniciar()"
+                                                 oncomplete="PF('dlg2').hide();"/>
+                                <p:commandButton value="#{bundle.btCancelarEliminarTipoDOcumeto}"
+                                                 onclick="PF('dlg2').hide();"/>
+                            </h:panelGrid>
+
+                        </p:dialog>
+                    </h:form>
+                </center>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

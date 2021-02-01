@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../Plantilla.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.ListMetaDatoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <br/> 
+            <h:form styleClass="jsfcrud_list_form" id="form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <p:messages/>
+                </h:panelGroup>
+
+                <p:panel header="#{bundle.panelMetaDato}" rendered="#{metaDatoController.listar}">
+                    <p:dataTable value="#{metaDatoController.items}" var="item" emptyMessage="#{bundle.ListMetaDatoEmpty}" 
+                                 paginator="true" rows="5">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMetaDatoTitle_idMetaDato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMetaDato}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMetaDatoTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMetaDatoTitle_idTipoDato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoDato.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <p:commandButton actionListener="#{metaDatoController.prepareEdit}" 
+                                             icon="ui-icon-pencil"
+                                             title="#{bundle.ListMetaDatoEditLink}"
+                                             ajax="true"
+                                             update="form"/>
+                            <h:outputText value=" "/>
+                            <p:commandButton action="#{metaDatoController.prepareDestroy}" 
+                                             icon="ui-icon-circle-close"
+                                             title="#{bundle.ListMetaDatoDestroyLink}"
+                                             ajax="true"
+                                             update="form"
+                                             oncomplete="PF('dlg2').show();"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:commandButton actionListener="#{metaDatoController.prepareCreate}" 
+                                     value="#{bundle.ListMetaDatoCreateLink}"
+                                     ajax="true" update="form"/>
+                </p:panel>
+
+                <p:panel header="#{bundle.panelMetaDato}" rendered="#{!metaDatoController.listar}">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateMetaDatoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{metaDatoController.selected.descripcion}" title="#{bundle.CreateMetaDatoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateMetaDatoRequiredMessage_descripcion}"/>
+  
+                        <h:outputLabel for="idTipoDato" value="#{bundle.labelTipoDato}"/>
+                        <p:selectOneMenu id="idTipoDato" value="#{metaDatoController.selected.idTipoDato}" title="#{bundle.CreateMetaDatoTitle_idTipoDato}" required="true" requiredMessage="#{bundle.CreateMetaDatoRequiredMessage_idTipoDato}">
+                            <f:selectItems value="#{tipoDatoController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                        
+                        <h:outputLabel for="check" value="#{bundle.checkMetaIR}"/>
+                        <p:selectBooleanCheckbox value="#{metaDatoController.selected.metaDatoIr}"/>
+                    </h:panelGrid>
+                    <br />
+                    <p:commandButton action="#{metaDatoController.create}" 
+                                     value="#{bundle.CreateMetaDatoSaveLink}" 
+                                     rendered="#{metaDatoController.nuevo}" 
+                                     ajax="true"
+                                     update=":form"/>
+                    <p:commandButton action="#{metaDatoController.update}" value="#{bundle.EditDocumentoIndexLink}"
+                                     rendered="#{!metaDatoController.nuevo}"
+                                     ajax="true"
+                                     update="form"/>
+                    <p:commandButton actionListener="#{metaDatoController.prepareList}" value="#{bundle.CreateMetaDatoShowAllLink}" 
+                                     immediate="true" ajax="true" update="form"/>
+
+                </p:panel>
+                
+                <p:dialog header="#{bundle.dialogConfirmar}" modal="true" widgetVar="dlg2" appendTo="@(body)">     
+                    <h:panelGrid columns="2">
+                        <p:commandButton action="#{metaDatoController.destroy}"  
+                                          value="#{bundle.ListTipoDocumentoDestroyLink}"
+                                          ajax="true" update=":form" process="@this"
+                                          oncomplete="PF('dlg2').hide();"/>
+                         <p:commandButton action="#{metaDatoController.prepareList}" value="#{bundle.btCancelarEliminarTipoDOcumeto}" ajax="true" update=":form" immediate="true"/>
+                    </h:panelGrid>
+                    
+                </p:dialog>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

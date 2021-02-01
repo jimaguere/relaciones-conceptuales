@@ -1,0 +1,7 @@
+\babel@toc {USenglish}{}
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\babel@toc {USenglish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{INTRODUCCIÓN}{12}{chapter*.6}%
+\contentsline {chapter}{REFERENCIAS}{15}{chapter*.6}%

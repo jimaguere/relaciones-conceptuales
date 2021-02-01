@@ -1,0 +1,33 @@
+ 
+\selectlanguage{spanish}
+
+\begin{abstract}
+
+
+\textbf{Objetivo}: Descubrir relaciones conceptuales entre los trabajos de grado de la Universidad de Nariño (Colombia) utilizando técnicas de minería de texto que faciliten la recuperación de trabajos de grado relacionados con la temática de la búsqueda identificando similitudes y diferencias entre ellos. \textbf{Metodología}: Se utilizó CRISP-DM como metodología. Usando diferentes técnicas de minería de texto, tales como Bag (bolsa de palabras), Tf-Idf y Doc2vec se estructuraron los documentos del repositorio de trabajos de grado de la Universidad de Nariño. Se utilizaron técnicas de aprendizaje no supervisado para encontrar relaciones taxonómicas (también llamadas relaciones categoriales) en los documentos estructurados. Con el modelo de reconocimiento de entidades (NER) se descubrieron conceptos claves en los diferentes grupos encontrados, se entrenó el modelo  Word2vec para encontrar relaciones temáticas entre estos conceptos. Para inferir temas de búsqueda a cada categoría encontrada se entrenó varios modelos de aprendizaje supervisado, con los modelos entrenados se implementaron algoritmos en la herramienta Maskana  con el fin de encontrar documentos relacionados a temas de búsqueda. \textbf{Resultados}: Se encontró el número óptimo de relaciones categoriales, con la implementación de los algoritmos se logró interpretar los conceptos de cada categoría y sus relaciones,  las pruebas demostraron que el modelo Doc2vec es el más adecuado para la estructuración del corpus de trabajos de grado,
+el modelo Xgboost resultó superior a los demás clasificadores; este modelo permite clasificar nuevos documentos que ingresen al repositorio y se implementó en el algoritmo \ref{alg:maskanita1}; para clasificar temáticas de búsqueda en las categorías o grupos encontrados y con esto poder recuperar documentos similares a esta. 
+ \textbf{Conclusiones}: Se descubrieron relaciones conceptuales en los trabajos de grado de  la Universidad de Nariño; al utilizar técnicas de minería de texto que facilitaron la recuperación de trabajos relacionados en las temáticas de búsqueda, identificando similitudes y diferencias entre ellos.
+
+
+%
+% Las pruebas demostraron que el modelo Doc2vec es el más adecuado para la estructuración del corpus de trabajos de grado. El número óptimo de categorías o grupos de conocimiento es 32. El modelo Xgboost resultó superior a los demás clasificadores; este modelo permite clasificar nuevos documentos que ingresen al repositorio y se implementó en el algoritmo \ref{alg:maskanita1}; para clasificar temáticas de búsqueda en las categorías o grupos encontrados y con esto poder recuperar documentos similares a esta. 
+
+%Los modelos Ner y Word2vec permitieron interpretar el conocimiento relacionado a cada una de las categorías encontradas, lo cuales fueron implementados en el algoritmo \ref{alg:maskanita2}; el cual visualiza relaciones conceptuales temáticas entre los documentos del repositorio
+
+
+\textbf{Palabras clave:} minería de textos; relaciones conceptuales; aprendizaje automático; NER, Word2vec, Doc2vec.
+\end{abstract}
+
+
+\selectlanguage{USenglish}
+
+\begin{abstract}
+\textbf {Objective}: To discover conceptual relationships between undergraduate projects at the University of Nariño (Colombia) using text mining techniques that facilitate the retrieval of undergraduate projects related to the topic of the search, identifying similarities and differences between them. \textbf {Methodology}: CRISP-DM was used as methodology. Using different text mining techniques, such as Bag (bag of words), Tf-Idf and Doc2vec, the documents of the repository of degree works of the University of Nariño were structured. Unsupervised learning techniques were used to find taxonomic relationships (also called categorical relationships) in the structured documents. With the entity recognition model (NER), key concepts were discovered in the different groups found, the Word2vec model was trained to find thematic relationships between these concepts. To infer search topics for each category found, several supervised learning models were trained, with the trained models algorithms were implemented in the Maskana tool in order to find documents related to search topics. \textbf {Results}: The optimal number of categorical relationships was found, with the implementation of the algorithms it was possible to interpret the concepts of each category and their relationships, the tests showed that the Doc2vec model is the most appropriate for structuring the corpus of degree works,
+the Xgboost model was superior to the other classifiers; This model allows classifying new documents that enter the repository and was implemented in the algorithm \ref {alg:maskanita1}; to classify search topics in the categories or groups found and thus be able to retrieve documents similar to this one.
+\textbf {Conclusions}: Conceptual relationships were discovered in the degree projects of the University of Nariño; by using text mining techniques that facilitated the recovery of related works in the search topics, identifying similarities and differences between them.
+
+\textbf{Keywords:}text mining; conceptual relationships; machine learning; NER, Word2vec, Doc2vec.
+\end{abstract}
+ 
+
+\selectlanguage{spanish}

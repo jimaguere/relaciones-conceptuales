@@ -1,0 +1,85 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: tesis.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: IEEEtran.bst
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: biblio.bib
+I was expecting a `,' or a `}'---line 316 of file biblio.bib
+ : 
+ : @book{aggarwal2012mining,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 456 of file biblio.bib
+ : @book{witten2016data
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 510 of file biblio.bib
+ : @book{witten2016data
+ :                     ,
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in benavides2014umayux
+Warning--empty journal in santana2014aplicacion
+Warning--empty journal in munozutilizacion
+Warning--missing school in pardo2009aplicacion
+Warning--missing school in gomesGarcia
+Warning--empty author in DescubrimientoPatrones
+Warning--missing school in DescubrimientoPatrones
+Warning--empty year in DescubrimientoPatrones
+Warning--empty journal in heuer2015semantic
+Warning--empty journal in cardellinoproyecto
+Warning--empty year in cardellinoproyecto
+Warning--missing school in capello2018sistema
+Warning--empty journal in neto2000document
+
+Done.
+You've used 52 entries,
+            4087 wiz_defined-function locations,
+            1106 strings with 17903 characters,
+and the built_in function-call counts, 32374 in all, are:
+= -- 2627
+> -- 743
+< -- 228
++ -- 390
+- -- 134
+* -- 1528
+:= -- 5106
+add.period$ -- 109
+call.type$ -- 52
+change.case$ -- 47
+chr.to.int$ -- 507
+cite$ -- 65
+duplicate$ -- 2421
+empty$ -- 2653
+format.name$ -- 175
+if$ -- 7456
+int.to.chr$ -- 0
+int.to.str$ -- 52
+missing$ -- 424
+newline$ -- 187
+num.names$ -- 51
+pop$ -- 1001
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 2513
+stack$ -- 0
+substring$ -- 1235
+swap$ -- 1847
+text.length$ -- 59
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 52
+warning$ -- 13
+while$ -- 142
+width$ -- 54
+write$ -- 495
+(There were 3 error messages)

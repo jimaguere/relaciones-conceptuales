@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <body>
+        <h:head>
+            <meta content='text/html; charset=iso-8859-1' http-equiv="Content-Type"/>
+        </h:head>
+        <ui:composition template="./../Plantilla.xhtml">
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.titleBuscador}"></h:outputText>
+            </ui:define>
+
+            <ui:define name="content">
+                <style>
+
+                    .link {
+                        fill: none;
+                        stroke: #666;
+                        stroke-width: 1.5px;
+                    }
+
+                    .node circle {
+                        fill: #ccc;
+                        stroke: #fff;
+                        stroke-width: 1.5px;
+                    }
+
+                    text {
+                        font: 10px sans-serif;
+                        pointer-events: none;
+                    }
+
+                </style>
+                
+             
+                 
+                 <div id="mydiv"></div>
+                 
+               
+                 <h:form id="form">
+                     <p:inputTextarea value="${buscadorControlador.jsonRelaciones}" id="texto_are" style="visibility: hidden;"/>
+                     
+                  <p:commandButton value="#{bundle.actionModeloTopicos}"
+                                         ajax="true"
+                                         update="form"
+                                         actionListener="#{buscadorControlador.word2Vec('893')}"
+                                         oncomplete="word2vec(${buscadorControlador.jsonRelaciones});"
+                                         />
+                  </h:form>
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

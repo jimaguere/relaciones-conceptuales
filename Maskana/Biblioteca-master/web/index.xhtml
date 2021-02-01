@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta content='text/html; charset=iso-8859-1' http-equiv="Content-Type"/>
+        <title>#{bundle.titleLogin}</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <center>
+            <p:panel  header="#{bundle.panelLogin}" style="width: 30%;" id="login">      
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <h:panelGrid columns="1">
+                        <pm:field>
+                            <p:outputLabel for="Usuario"
+                                           value="#{bundle.labelUsuarios}"
+                                           style="width: 20%"
+                                           />
+                            <p:inputText id="Usuario"
+                                         label="Usuario"
+                                         value="#{usuarioLogin.usuario}"
+                                         style="width: 100%"
+                                         required="true"/>
+                        </pm:field>
+                        <pm:field>
+                            <p:outputLabel value="#{bundle.labelClave}" for="claveP"
+                                           style="width: 20%"/>  
+                            <p:password id="claveP" 
+                                        style="width: 100%"
+                                        value="#{usuarioLogin.clave}"/>
+                        </pm:field>
+                    </h:panelGrid>
+
+                    <p:commandButton
+                        style="width: 50%"
+                        value="#{bundle.btLogin}"
+                        actionListener="#{usuarioLogin.confirmar}"
+                        ajax="false"
+                        update="growl"/> 
+
+                    <h:panelGroup/>                 
+
+                </h:form>
+            </p:panel>  
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:commandLink value="#{bundle.lbRegistraseMaskana}" ajax="true"  onclick="PF('dlg2').show()"/>
+                    <p:commandLink value="#{bundle.tabCorreoPerdido}" ajax="true"  onclick="PF('dlg3').show()"/>
+                </h:panelGrid>
+            </h:form>
+        </center>
+        <h:form id="form">
+            <p:dialog header="#{bundle.tituloRegistroUsuario}" modal="true" widgetVar="dlg2">     
+                <p:panel id="personal" header="#{bundle.tabPersonal}" >                        
+                    <h:panelGrid columns="5">
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_nombres}" for="nombres" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_apellidos}" for="apellidos" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_correoElectronico}" for="correoElectronico" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_institucion}" for="institucion" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_profesion}" for="profesion" />
+
+                        <p:inputText id="nombres" value="#{registroController.selected.nombres}" title="#{bundle.CreateUsuarioTitle_nombres}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nombres}"/>                           
+                        <p:inputText id="apellidos" value="#{registroController.selected.apellidos}" title="#{bundle.CreateUsuarioTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apellidos}"/>                                  
+                        <p:inputText id="correoElectronico" value="#{registroController.selected.correoElectronico}" title="#{bundle.CreateUsuarioTitle_correoElectronico}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_correoElectronico}">
+                            <f:validator validatorId="emailValidator"/>
+                        </p:inputText>  
+                        <p:inputText id="institucion" 
+                                     value="#{registroController.selected.institucion}" 
+                                     title="#{bundle.CreateUsuarioTitle_institucion}" 
+                                     required="true" 
+                                     requiredMessage="#{bundle.CreateUsuarioRequiredMessage_institucion}"
+                                     validator="generalValidation"/>
+
+                        <p:inputText id="profesion" 
+                                     value="#{registroController.selected.profesion}" 
+                                     title="#{bundle.CreateUsuarioTitle_profesion}" 
+                                     required="true" 
+                                     requiredMessage="#{bundle.CreateUsuarioRequiredMessage_profesion}"
+                                     validator="generalValidation"/>                       
+
+                        <p:message for="nombres"/>
+                        <p:message for="apellidos"/>
+                        <p:message for="correoElectronico"/>
+                        <p:message for="institucion"/>
+                        <p:message for="profesion"/>  
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:panel id="seguridad" header="#{bundle.tabSeguridad}">                         
+                    <h:panelGrid columns="2" border="0">
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_clave}" for="clave" />
+                        <p:outputLabel value="#{bundle.labelConfirmarClave}" for="claveConf" />
+
+                        <p:password id="clave" value="#{registroController.selected.clave}"
+                                    title="#{bundle.CreateUsuarioTitle_clave}" 
+                                    required="true" 
+                                    requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}"
+                                    validator="paswordValidation"
+                                    />                                    
+                        <p:password id="claveConf"  
+                                    title="#{bundle.CreateUsuarioTitle_clave}" 
+                                    required="true"
+                                    requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}"
+                                    immediate="true" value="#{registroController.confirmarClave}"/>  
+
+
+                        <p:message for="clave"/>
+                        <p:message for="claveConf"/>                                
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="4" border="0">
+                        <p:captcha label="Captcha" id="capcha" validatorMessage="#{bundle.mensajeValidarCapcha}"/>   
+                        <p:message for="capcha"/>
+                        <p:commandButton action="#{registroController.create}" value="#{bundle.CreateUsuarioSaveLink}" ajax="false"
+                                         update=":form"
+                                         id="bt"/>                                    
+                    </h:panelGrid>                             
+                </p:panel>  
+            </p:dialog>
+
+
+        </h:form>
+        <h:form>
+            <p:dialog header="#{bundle.tituloRecuperacionClave}" modal="true" widgetVar="dlg3">     
+                <p:panel id="personalC" header="#{bundle.tabCorreoPerdido}" >  
+                    <h:panelGrid columns="3">
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_correoElectronico}" for="correoElectronicoC" />
+                        <p:inputText id="correoElectronicoC" value="#{registroController.selected.correoElectronico}" title="#{bundle.CreateUsuarioTitle_correoElectronico}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_correoElectronico}">
+                            <f:validator validatorId="emailValidator"/>
+                        </p:inputText> 
+                        <p:commandButton value="#{bundle.buttuonResEnviar}" action="#{registroController.recurperarContraseña}"
+                                         update=":form" ajax="false"/>
+
+                    </h:panelGrid>
+                </p:panel>
+            </p:dialog>
+        </h:form>
+
+    </h:body>
+
+</html>
+

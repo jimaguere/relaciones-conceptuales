@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../Plantilla.xhtml">
+
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <p:accordionPanel id="accordion">
+
+                <p:tab title="#{bundle.legendInfoBasica}">
+                    <p:fieldset legend="#{bundle.legendInfoBasica}">
+                        <h:form id="form1">
+                            <p:growl showDetail="true"/>
+                            <h:panelGrid columns="2" cellspacing="30">
+                                <h:panelGroup>  
+                                    <h:panelGrid>
+                                        <h:outputLabel value="#{bundle.EditUsuarioLabel_nombres}" for="nombres" />
+                                        <h:inputText id="nombres" value="#{usuarioController.selected.nombres}" title="#{bundle.EditUsuarioTitle_nombres}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_nombres}" size="30"/>    
+                                    </h:panelGrid>
+                                </h:panelGroup>
+                                <h:panelGroup>
+                                    <h:panelGrid>
+                                        <h:outputLabel value="#{bundle.EditUsuarioLabel_apellidos}" for="apellidos" />
+                                        <h:inputText id="apellidos" value="#{usuarioController.selected.apellidos}" title="#{bundle.EditUsuarioTitle_apellidos}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_apellidos}" size="30"/>                 
+                                    </h:panelGrid>
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <h:panelGrid>
+                                        <h:outputLabel value="#{bundle.EditUsuarioLabel_institucion}" for="institucion" />
+                                        <h:inputText id="institucion" value="#{usuarioController.selected.institucion}" title="#{bundle.EditUsuarioTitle_institucion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_institucion}" size="30"/>
+                                    </h:panelGrid>
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <h:panelGrid>
+                                        <h:outputLabel value="#{bundle.EditUsuarioLabel_profesion}" for="profesion" />                             
+                                        <h:inputText id="profesion" value="#{usuarioController.selected.profesion}" title="#{bundle.EditUsuarioTitle_profesion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_profesion}" size="30"/>        
+                                    </h:panelGrid>
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <h:panelGrid>
+                                        <h:outputLabel value="#{bundle.EditUsuarioLabel_correoElectronico}" for="correoElectronico" />
+                                        <h:inputText id="correoElectronico" value="#{usuarioController.selected.correoElectronico}" title="#{bundle.EditUsuarioTitle_correoElectronico}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_correoElectronico}" size="30"/>                        
+                                    </h:panelGrid>
+                                </h:panelGroup>
+                                <h:panelGroup/>
+
+                                <p:commandButton action="#{usuarioController.update}" value="#{bundle.EditUsuarioSaveLink}" ajax="true" update="form1"
+                                                 style="width: 40%"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </p:fieldset>
+                </p:tab>
+                <p:tab title="#{bundle.legendInfoSeg}">
+                    <p:fieldset legend="#{bundle.legendInfoSeg}">
+                        <h:form id="form">
+                            <p:growl showDetail="true"/>
+                            <p:inputText id="hidenT" style="visibility: hidden" value="#{usuarioController.selected.clave}"/>
+                            <h:panelGrid columns="3" cellspacing="30"> 
+                                <h:panelGroup>
+                                    <h:panelGrid>
+                                      
+                                        <p:outputLabel value="#{bundle.labelClaveActual}" for="claveAct" />  
+                                        <p:password id="claveAct" value="#{usuarioController.claveActual}"
+                                                    title="#{bundle.CreateUsuarioTitle_clave}" 
+                                                    required="true" 
+                                                    requiredMessage="#{bundle.createUsuarioClaveActualRequerida}"
+                                                    size="30"
+                                                    validator="paswordValidationActual"
+                                                    >
+                                        </p:password>
+                                        <p:message for="claveAct" id="mClaveAct"/>
+                                        
+                                    </h:panelGrid>
+                                </h:panelGroup>
+
+                                
+
+                                <h:panelGroup>
+                                    <h:panelGrid>
+                                        <p:outputLabel value="#{bundle.labelnuevaClave}" for="clave" />  
+                                        <p:password id="clave" value="#{usuarioController.claveActualUsuario}"
+                                                    title="#{bundle.labelnuevaClave}" 
+                                                    required="true" 
+                                                    requiredMessage="#{bundle.createUsuarioClaveNuevaRequerida}"
+                                                    validator="paswordValidationA" size="30"
+                                                    /> 
+                                        <p:message for="clave"/>
+                                    </h:panelGrid>
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <h:panelGrid>
+                                        <p:outputLabel value="#{bundle.labelConfirmarClave}" for="claveConf" />
+                                        <p:password id="claveConf"  
+                                                    title="#{bundle.CreateUsuarioTitle_clave}" 
+                                                    required="true"
+                                                    requiredMessage="#{bundle.createUsuarioClaveRequrred}"
+                                                    immediate="true" value="#{usuarioController.confirmarClave}" size="30"/>  
+                                        <p:message for="claveConf"/>
+                                    </h:panelGrid>
+                                </h:panelGroup>
+
+                                <p:commandButton action="#{usuarioController.cambioClave}" value="#{bundle.EditUsuarioSaveLink}" ajax="true" update="form" style="width: 40%"/>          
+                            </h:panelGrid>
+                        </h:form>
+                    </p:fieldset>
+                </p:tab>
+            </p:accordionPanel>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

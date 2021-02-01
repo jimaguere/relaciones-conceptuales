@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantilla.xhtml">
+           
+            <ui:define name="content">
+                 <br/>
+                <h:form id="form">
+                    <p:growl/>
+                    <p:panel header="#{bundle.panelRepositorio}">
+                        <h:panelGrid columns="1" style="width: 80%;">
+                            <p:outputLabel for="ruta" value="#{bundle.labelRutaRepositorio}"/>
+                            <p:inputText required="true" id="ruta"
+                                         requiredMessage="#{bundle.validacionRepositorioRequerido}"                                      
+                                         value="#{repositorioControlador.rutaOntologia}"
+                                         style="width: 95%">
+                             <!--    <f:validator validatorId="rutaValidation" />-->
+                            </p:inputText>
+                            <h:panelGrid columns="1">
+                                <p:commandButton value="#{bundle.btCrearRepositorio}" 
+                                                 actionListener="#{repositorioControlador.crearRepositorio}"
+                                                 update=":form"
+                                                 ajax="true"
+                                                 validateClient="true"/>
+
+                            </h:panelGrid>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

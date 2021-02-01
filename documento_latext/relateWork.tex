@@ -1,0 +1,74 @@
+\chapter{TRABAJOS RELACIONADOS}
+
+Las capacidad de recolectar datos de objetos en movimiento ha ido aumentando 
+rápidamente y el interés de consulta
+de patrones que describen el comportamiento colectivo también ha aumentado. 
+\cite{vieira2009line} enumera tres grupos de patrones
+``colectivos'' en bases de datos de objetos en movimiento: clústers móviles, 
+consulta de convoyes y patrones de agrupamiento.
+
+Los clústers móviles \cite{jensen2007continuous} \cite{kalnis2005discovering} 
+\cite{li2008mining} 
+y  consultas de convoyes  \cite{jeung2008discovery-1} \cite{jeung2008convoy}, 
+tienen en común que se basan en algoritmos
+de clústering, principalmente en algoritmos basados en densidad como el 
+algoritmo DBSCAN\cite{ester1996density}.
+
+Los clústers móviles se definen entre dos instantes de tiempo consecutivos. Los 
+clústers  se pueden unir sólo si el número de objetos comunes entre ellos están 
+por encima del parámetro predefinido.
+Un clúster es reportado si no hay otro nuevo clúster que pueda ser unido a éste. 
+Este proceso se aplica cada vez para 
+todos los instantes de tiempo en el conjunto de datos. 
+
+Las consultas de convoyes se definen como un clúster denso de trayectorias que 
+permanecen juntas al menos por un tiempo contínuo predefinido. 
+
+Las principales diferencias entre las dos técnicas son la forma en que se unen 
+los grupos  entre dos intervalos
+consecutivos de tiempo y el uso de un parámetro adicional para especificar un 
+tiempo mínimo de duración. Aunque
+estos métodos están estrechamente relacionados con los patrones de agrupamiento, 
+ninguno de ellos asume una  forma predefinida.
+
+Previos trabajos de detección de patrones de agrupamiento móviles son descritos 
+por \cite{ gudmundsson2006computing}
+y \cite{benkert2008reporting}. Ellos introducen
+el uso de discos con un radio predefinido para identificar  grupos de 
+trayectorias que se mueven juntos en la misma
+dirección, todas las trayectorias que se encuentran dentro del disco en un 
+instante  de tiempo particular se 
+considera un patrón candidato. La principal limitación de este proceso es que 
+hay un número infinito de posibles
+ubicaciones del disco en cualquier instante de tiempo. En efecto, en 
+\cite{gudmundsson2006computing} se ha demostrado
+que el descubrimiento de agrupaciones fijas, donde los patrones de las mismas 
+entidades permanecen juntas durante 
+todo el intervalo, es un problema NP-complejo. 
+
+\cite{vieira2009line} son  los  primeros  en  presentar  una  solución  exacta  
+para  reportar  patrones  de agrupación en tiempo polinomial, y también pueden trabajar efectivamente en 
+tiempo real. Su trabajo revela que el tiempo de solución polinomial se puede encontrar 
+a través de  la  identificación  de  un  número  discreto  de  ubicaciones  para  colocar 
+ el  centro  del disco.  Los  autores  proponen  el  algoritmo  BFE  (Basic  Flock  Evaluation)  
+basado  en  el tiempo de unión y combinación de los discos. La idea principal de este algoritmo 
+es primero  encontrar  el  número  de  discos  válidos  en  cada  instante  de  
+tiempo  y  luego combinarlos  uno  a  uno  entre  tiempos  adyacentes. Adicionalmente,  se  
+proponen  otros cuatro  algoritmos  basados  en  métodos  heurísticos,  para  reducir  el  
+número  total  de candidatos  a  ser  combinados  y,  por  lo  tanto,  el  costo  global del
+algoritmo.  Sin  embargo,  el pseudocódigo y  los  resultados  experimentales
+muestran todavía una alta complejidad computacional, largos tiempos de respuesta,
+debido a que este algoritmo usa $\delta$ para partir los flocks hace que el número de patrones
+encontrados sea mayor y esto hace difícil su interpretación.
+
+
+\cite{romero2011mining} y \cite{turdu2014} proponen  una  metodología  que  
+permite  identificar  patrones de agrupamiento utilizando tradicionales y potentes algoritmos de minería de datos 
+usando patrones frecuentes, el cual fue comparado con BFE demostrando un alto 
+rendimiento con conjuntos de datos sintéticos, aunque con conjuntos de datos reales el 
+tiempo de respuesta siguió siendo eficiente pero similar a BFE. Este algoritmo trata el 
+conjunto de trayectorias como una base de datos transaccional al convertir cada trayectoria, 
+que se define  como  un  conjunto  de  lugares  visitados,  en  una  transacción,  
+definida  como  un conjunto  de ítems.  De  esta  manera,  es  posible  aplicar  cualquier  
+algoritmo  de  reglas  de asociación y encontrar patrones frecuentes sobre el conjunto dado, este algoritmo hace un llamado a LCM
+propuesto por \cite{uno2004lcm} para encontrar patrones máximos y eso permite encontrar los flocks más largos.
